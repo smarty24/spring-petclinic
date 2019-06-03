@@ -15,7 +15,7 @@ node {
 
                 // Sonarqube 7 must be configured in the Jenkins Manage Jenkins -> Configure System -> Add SonarQube server 
                 withSonarQubeEnv('SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=3a18156e6646e357deb267548584e75a83e8dace -Dsonar.projectVersion=1.0 -Dsonar.projectKey=PetClinic_Key -Dsonar.sources=src -Dsonar.java.binaries=."
+                        bat "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=3a18156e6646e357deb267548584e75a83e8dace -Dsonar.projectVersion=1.0 -Dsonar.projectKey=PetClinic_Key -Dsonar.sources=src -Dsonar.java.binaries=."
                 }
         } 
 	stage('Build') {
