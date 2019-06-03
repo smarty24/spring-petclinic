@@ -15,7 +15,7 @@ node {
 
                 // Sonarqube 7 must be configured in the Jenkins Manage Jenkins -> Configure System -> Add SonarQube server 
                 withSonarQubeEnv('SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=cb4e2ac86c60200796a7cf866c2a60955a505db2 -Dsonar.projectVersion=1.0 -Dsonar.projectKey=PetClinic_Key -Dsonar.sources=src -Dsonar.java.binaries=."
+                        bat "${scannerHome}/bin/sonar-scanner -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=cb4e2ac86c60200796a7cf866c2a60955a505db2 -Dsonar.projectVersion=1.0 -Dsonar.projectKey=PetClinic_Key -Dsonar.sources=src -Dsonar.java.binaries=."
                 }
         } 
 	stage('Build') {
@@ -27,7 +27,7 @@ node {
                 } 
                 else {
                         // Execute Batch script if OS flavor is Windows		
-                        sh(/"${mavenHome}\bin\mvn" clean package/)
+                        bat(/"${mavenHome}\bin\mvn" clean package/)
                         // Publish JUnit Report
                         junit '**/target/surefire-reports/TEST-*.xml'
                 }
